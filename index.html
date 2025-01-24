@@ -3,10 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Diovic & Kyla - Our Love Story</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1a1a2e;
+            --text-primary: #e0e0e0;
+            --accent-color: #6a5acd;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Arial', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            background: linear-gradient(45deg, var(--bg-secondary), #16213e, #0f3460, var(--bg-secondary));
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        .gallery-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px;
+            background-color: rgba(26, 26, 46, 0.7);
+        }
+
+        .gallery-switch-btn {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-switch-btn.active {
+            border-color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .gallery-section {
+            padding: 50px 0;
+            background-color: rgba(26, 26, 46, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-container:not(.active) {
+            display: none;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: 
+                opacity 0.7s ease-in-out, 
+                transform 0.7s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .love-story-text {
+            font-style: italic;
+            color: var(--accent-color);
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-switch-btn {
+                width: 70px;
+                height: 70px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h2>This is my First Project With Udemy</h2>
-    
+    <button class="mode-toggle" id="modeToggle">
+        <i id="modeIcon" class="fas fa-moon"></i>
+    </button>
+
+    <div class="gallery-switcher">
+        <img src="VT2.jpg" alt="My Gallery" class="gallery-switch-btn active" data-gallery="my-gallery" data-title="Diovic Solon">
+        <img src="VT7.jpg" alt="Girlfriend Gallery" class="gallery-switch-btn" data-gallery="girlfriend-gallery" data-title="Kyla B. Dorio">
+        <img src="US1.jpg" alt="Together Gallery" class="gallery-switch-btn" data-gallery="Together-gallery" data-title="Our Love Story">
+    </div>
+
+    <div class="container py-5">
+        <div class="gallery-section text-center mb-4">
+            <h1 class="mb-3" id="gallery-title">Diovic Solon</h1>
+            <p id="gallery-subtitle">Age: 21 Years Old | From: Peace Valley</p>
+            
+            <div id="my-gallery" class="gallery-container active">
+                <img src="VT1.jpg" class="gallery-image" alt="My Image 1">
+                <img src="VT2.jpg" class="gallery-image" alt="My Image 2">
+                <img src="VT3.jpg" class="gallery-image" alt="My Image 3">
+                <img src="VT4.jpg" class="gallery-image" alt="My Image 4">
+                <img src="VT5.jpg" class="gallery-image" alt="My Image 5">
+                <img src="VT6.jpg" class="gallery-image" alt="My Image 6">
+            </div>
+
+            <div id="girlfriend-gallery" class="gallery-container">
+                <img src="VT7.jpg" class="gallery-image" alt="Girlfriend Image 1">
+                <img src="VT8.jpg" class="gallery-image" alt="Girlfriend Image 2">
+                <img src="VT9.jpg" class="gallery-image" alt="Girlfriend Image 3">
+                <img src="VT12.jpg" class="gallery-image" alt="Girlfriend Image 3">
+                <img src="VT10.jpg" class="gallery-image" alt="Girlfriend Image 3">
+                <img src="VT11.jpg" class="gallery-image" alt="Girlfriend Image 3">
+                <img src="VT12.jpg" class="gallery-image" alt="Girlfriend Image 3">
+                <img src="VT13.jpg" class="gallery-image" alt="Girlfriend Image 3">
+                <img src="VT14.jpg" class="gallery-image" alt="Girlfriend Image 3">
+            </div>
+
+            <div id="Together-gallery" class="gallery-container">
+                <img src="US1.jpg" class="gallery-image" alt="Together Image 1">
+                <img src="US2.jpg" class="gallery-image" alt="Together Image 2">
+                <img src="US3.jpg" class="gallery-image" alt="Together Image 3">
+                <img src="US4.jpg" class="gallery-image" alt="Together Image 3">
+                <img src="US5.jpg" class="gallery-image" alt="Together Image 3">
+                <img src="US6.jpg" class="gallery-image" alt="Together Image 3">
+                <img src="US7.jpg" class="gallery-image" alt="Together Image 3">
+                <img src="US8.jpg" class="gallery-image" alt="Together Image 3">
+                <img src="US9.jpg" class="gallery-image" alt="Together Image 3">
+            </div>
+
+            <div class="love-story-text" id="gallery-love-story"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryButtons = document.querySelectorAll('.gallery-switch-btn');
+            const galleries = document.querySelectorAll('.gallery-container');
+            const modeToggle = document.getElementById('modeToggle');
+            const galleryTitle = document.getElementById('gallery-title');
+            const gallerySubtitle = document.getElementById('gallery-subtitle');
+            const galleryLoveStory = document.getElementById('gallery-love-story');
+
+            // Gallery switching
+            galleryButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons and galleries
+                    galleryButtons.forEach(b => b.classList.remove('active'));
+                    galleries.forEach(g => g.classList.remove('active'));
+
+                    // Add active class to clicked button and corresponding gallery
+                    btn.classList.add('active');
+                    const galleryId = btn.dataset.gallery;
+                    document.getElementById(galleryId).classList.add('active');
+
+                    // Update title and subtitle
+                    galleryTitle.textContent = btn.dataset.title;
+                    
+                    // Customize subtitle and love story based on gallery
+                    switch(galleryId) {
+                    case 'my-gallery':
+                        gallerySubtitle.textContent = 'Age: 21 Years Old | From: Peace Valley';
+                        galleryLoveStory.textContent = 'A dreamer with a heart full of passion, always chasing my goals and finding joy in life\'s simplest moments. My world is painted with adventures, laughter, and the hope of creating beautiful memories.';
+                        break;
+                    case 'girlfriend-gallery':
+                        gallerySubtitle.textContent = 'Age: 22 Years Old | From: Villa Remedios';
+                        galleryLoveStory.textContent = 'A gentle soul with a radiant smile that lights up every room. My dreams are woven with kindness, creativity, and the magic of love that transforms ordinary moments into extraordinary memories.';
+                        break;
+                    case 'Together-gallery':
+                        gallerySubtitle.textContent = 'A Love Story Beyond Time';
+                        galleryLoveStory.textContent = 'Our hearts have been intertwined since grade 10, and on May 14, 2025, we celebrate 6 beautiful years of love, companionship, and endless memories.';
+                        break;
+                    }
+                });
+            });
+
+            // Dark/Light Mode Toggle
+            modeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-mode');
+                
+                if (document.body.classList.contains('light-mode')) {
+                    document.documentElement.style.setProperty('--bg-primary', '#f4f4f4');
+                    document.documentElement.style.setProperty('--bg-secondary', '#ffffff');
+                    document.documentElement.style.setProperty('--text-primary', '#333');
+                    document.documentElement.style.setProperty('--accent-color', '#4a4acd');
+                } else {
+                    document.documentElement.style.setProperty('--bg-primary', '#121212');
+                    document.documentElement.style.setProperty('--bg-secondary', '#1a1a2e');
+                    document.documentElement.style.setProperty('--text-primary', '#e0e0e0');
+                    document.documentElement.style.setProperty('--accent-color', '#6a5acd');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
